@@ -1,0 +1,13 @@
+{% extends "todosApp/base.html" %}
+
+
+{% block content %}
+<h1>Hello!</h1>
+<hr>
+<h1>These are the list of things You need to do</h1>
+<ul>
+    {% for mytodolist in todo_list %}
+        <li>{{ mytodolist }}</li>
+    {% endfor%}
+</ul>
+{% endblock content%}
