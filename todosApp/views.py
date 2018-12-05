@@ -1,16 +1,20 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView,ListView
+from django.shortcuts import render,redirect
+from django.http import HttpResponseRedirect
 from todosApp.models import ToDo
 
 # Create your views here.
-""" template view just redenders an html template"""
-class FormsView(TemplateView):
-    template_name='todosApp/formtemplate.html'
+def index(request):
+    template='todosApp/view.html'
+    context= {
+    'todolist':ToDo.objects.all()
+    }
+    return render(request,template,context)
 
-
-""" List View displays all the objects in our database"""
-class AllToDosList(ListView):
-    model= ToDo
-    template_name='todosApp/todo_list.html'
-    queryset=ToDo.objects.all()
+def todo(request):
+    if request.method == 'POST':
+        template='todosApp/todo.html'
+        getUserInput=ToDo.objects.create(description=request.POST['toDos'])
+        getUserInput.save()
+        return HttpResponseRedirect("/")
+        
 

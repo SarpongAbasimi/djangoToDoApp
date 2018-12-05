@@ -1,0 +1,16 @@
+{% extends 'todosApp/base.html'%}
+
+{% block content %}
+    <h1>Hello !! These are You to do List</h1>
+    <ul>
+        {% for allmydodos in todolist %}
+            <li>{{ allmydodos.description }}</li>
+        {% endfor %}
+        <hr>
+        <form action="/todo/" method="POST">
+                {% csrf_token %}
+                <label for="toDoList">To dos : </label><input type="text" name="toDos" id="toDoList" placeholder="Anything to do?" required onclick="focus">
+            <input type="submit" name="mysubmit" value="Add">
+        </form>
+    </ul>
+{% endblock %}

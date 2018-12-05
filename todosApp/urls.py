@@ -3,6 +3,6 @@ from .import views
 
 
 urlpatterns = [
-    path('',views.FormsView.as_view()),
-    path('list/',views.AllToDosList.as_view(),name='todo_list')
+    path('',views.index,name='index-view'),
+    path('todo/',views.todo,name='todo-view')
 ]
