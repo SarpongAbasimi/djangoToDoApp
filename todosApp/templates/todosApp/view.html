@@ -2,10 +2,14 @@
 
 {% block content %}
 <div class="container mt-3">
-    <h1>These are Your to do List</h1>
+
+        <h1>You have <span class= "badge badge-success mr-1">{{length }}</span>items in your <strong>ToDos</strong> list</h1>
+
     <ul class='list-group list-group-flush'>
         {% for allmydodos in todolist %}
-            <li class="list-group-item ">{{ allmydodos.description }}</li>
+            <li class="list-group-item ">{{ allmydodos.description }}<form action='/deleteToDo/{{allmydodos.id}}' method='POST' style="display:inline" >
+                {% csrf_token %}
+                <input class='ml-1 btn btn-outline-dark btn-sm' type="submit" value='&#128465' /></form></li>
         {% endfor %}
     </ul>
         <hr>
