@@ -1,16 +1,30 @@
 {% extends 'todosApp/base.html'%}
 
 {% block content %}
-    <h1>Hello !! These are You to do List</h1>
-    <ul>
+<div class="container mt-3">
+    <h1>These are Your to do List</h1>
+    <ul class='list-group list-group-flush'>
         {% for allmydodos in todolist %}
-            <li>{{ allmydodos.description }}</li>
+            <li class="list-group-item ">{{ allmydodos.description }}</li>
         {% endfor %}
-        <hr>
-        <form action="/todo/" method="POST">
-                {% csrf_token %}
-                <label for="toDoList">To dos : </label><input type="text" name="toDos" id="toDoList" placeholder="Anything to do?" required onclick="focus">
-            <input type="submit" name="mysubmit" value="Add">
-        </form>
     </ul>
+        <hr>
+                <form  action="/todo/" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+        
+                        <div class="col-md-2" >
+                            <label class="badge badge-dark" for="toDoList">ToDos : </label>
+                        </div>
+                        <div class="col-md-8" >
+                            <input  class="form-control"  type="text" name="toDos" id="toDoList" placeholder="Anything to do?" required onclick="focus">
+                        </div>
+                        <div class="col-md-2 mt-1">
+                             <input class="btn btn-outline-success" type="submit" name="mysubmit" value="Add">
+                        </div>
+               
+                    </div>
+
+                </form>
+</div>
 {% endblock %}
