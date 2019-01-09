@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-""" A todo model to store subited to do list """
+""" A todo model to store submitted to do list """
 class ToDo(models.Model):
     description=models.TextField(max_length=100)
 
